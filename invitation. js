@@ -1,0 +1,112 @@
+function updateCountdown() {
+    // Set the target date and time: 7 November 2024 at 8:00 PM
+    const targetDate = new Date("2024-11-07T20:00:00");
+    
+    // Get the current date and time
+    const now = new Date();
+    
+    // Calculate the time difference in milliseconds
+    const timeDiff = targetDate - now;
+
+    // Calculate days, hours, minutes, and seconds
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    // Display the countdown in respective HTML elements
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+}
+
+// Update the countdown every 1 second
+setInterval(updateCountdown, 1000);
+// Hide wedding card and show content on "OK" button click
+document.getElementById("okButton").addEventListener("click", function() {
+    let weddingCard = document.getElementById("weddingCard");
+    weddingCard.style.transition = 'opacity 1s, transform 1s';
+    weddingCard.style.opacity = '0';
+    weddingCard.style.transform = 'scale(0.9)';
+
+    setTimeout(() => {
+        weddingCard.style.display = 'none';  // Completely hide after fade-out
+        
+        // Show the rest of the content
+        document.getElementById("mainContent").style.display = 'block';
+    }, 1000);  // Wait for the fade-out to complete
+});
+
+// Show wedding card again on "Re-See" button click
+document.getElementById("reSeeButton").addEventListener("click", function() {
+    let weddingCard = document.getElementById("weddingCard");
+    weddingCard.style.display = 'block';  // Show the wedding card
+    weddingCard.style.opacity = '1';
+    weddingCard.style.transform = 'scale(1)';
+    
+    // Hide the rest of the content
+    document.getElementById("mainContent").style.display = 'none';
+});
+
+// Handle multiple file uploads
+const fileInput = document.getElementById('fileUpload');
+const uploadedFilesContainer = document.getElementById('fileContainer');
+
+// Load previously uploaded files from local storage
+document.addEventListener('DOMContentLoaded', loadUploadedFiles);
+
+// Folder icon click to toggle gallery visibility
+document.getElementById('galleryFolder').addEventListener('click', function() {
+    document.getElementById('uploadedFiles').style.display = 'block';
+});
+
+// Close button to hide the gallery
+document.getElementById('closeGallery').addEventListener('click', function() {
+    document.getElementById('uploadedFiles').style.display = 'none';
+});
+
+// Event listener for file upload
+fileInput.addEventListener('change', function() {
+    const files = Array.from(fileInput.files);
+    files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const fileUrl = e.target.result;
+            displayFile(fileUrl, file.type);
+            saveFile(fileUrl, file.type);
+        };
+        reader.readAsDataURL(file);
+    });
+});
+
+// Display the uploaded files (images/videos)
+function displayFile(fileUrl, fileType) {
+    const fileElement = document.createElement('div');
+    fileElement.classList.add('file-item');
+
+    if (fileType.startsWith('image')) {
+        const img = document.createElement('img');
+        img.src = fileUrl;
+        img.alt = 'Uploaded Image';
+        img.classList.add('gallery-image');
+        fileElement.appendChild(img);
+    } else if (fileType.startsWith('video')) {
+        const video = document.createElement('video');
+        video.src = fileUrl;
+        video.controls = true;
+        video.classList.add('gallery-video');
+        fileElement.appendChild(video);
+    }
+
+    uploadedFilesContainer.appendChild(fileElement);
+}
+
+// Save the uploaded files to local storage
+function saveFile(fileUrl, fileType) {
+    // Your existing logic to save files
+}
+
+function loadUploadedFiles() {
+    // Your existing logic to load files
+}

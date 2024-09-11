@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Wedding Card -->
+<div id="weddingCard">
+    <img src="https://assets.onecompiler.app/42q9zxfny/42rt45w9c/1000057723.jpg" alt="Wedding Card" id="weddingCardImage">
+   <div id="countdown">
+    <h2>Wedding Countdown</h2>
+    <div id="timer">
+        <span id="days"></span> Days 
+        <span id="hours"></span> Hours 
+        <span id="minutes"></span> Minutes 
+        <span id="seconds"></span> Seconds
+    </div>
+</div>
+    <button class="ok-button" id="okButton">OK</button>
+</div>
+   
+    <!-- Main Content -->
+    <div id="mainContent" style="display: none;">
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
+        <!-- RSVP Section -->
+        <div class="section" id="rsvpForm">
+            <h2>RSVP Form</h2>
+            <form>
+                <label for="guestName">Guest Name:</label>
+                <input type="text" id="guestName" name="guestName" readonly><br><br>
+
+                <label>Will you attend?</label><br>
+                <input type="radio" id="yes" name="rsvp" value="Yes"> Yes
+                <input type="radio" id="no" name="rsvp" value="No"> No<br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <!-- Travel Info Section -->
+        <div class="section" id="travel">
+            <h2>Travel Information</h2>
+            <p>If anyone would like to enjoy a luxurious stay with our special wedding hospitality, our hotel is waiting for you!”</p>
+            <ul>
+                <li><strong>Hotel ZEN-INN(entirevents):</strong>Plot No 10 Pocket, 2, Jasola Metro Rd, Pocket 10B, Jasola, New Delhi, Delhi 110025</li>
+                <!-- Redirect Button -->
+<button onclick="window.location.href='https://www.entirevents.com/';">Book now</button>
+                <li><strong>Hotel River View:</strong>Bhaskar Compound, B-9, Kalindi Kunj Rd, Abul Fazal Enclave Part 1, Part 1 Abul Fazal Enclave, Block E, Jamia Nagar, Okhla, New Delhi, Delhi 110025</li>
+        <!-- Redirect Button -->
+<button onclick="window.location.href='https://riverviewhotel.in/';">Book now</button>
+                <li><strong>neutech :</strong>Nutech Office, 56, Pocket 1, Jasola, New Delhi, Delhi 110025</li>
+        <!-- Redirect Button -->
+        <!-- Redirect Button -->
+<button class="redirect-btn" onclick="window.location.href='https://g.co/kgs/813uwG';">Book now</button>
+            </ul>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="section" id="gallery">
+            <h2>Photo & Video Gallery</h2>
+            <input type="file" id="fileUpload" accept="image/*,video/*" multiple>
+            
+            <!-- Folder Icon for Opening the Gallery -->
+            <div id="galleryFolder" class="folder-icon">
+                <img src="folder-icon.png" alt="Gallery Folder" class="folder-img">
+                <p>Open Gallery</p>
+            </div>
+
+            <!-- Hidden gallery section to display uploaded photos/videos -->
+            <div id="uploadedFiles" class="hidden-gallery">
+                <button id="closeGallery" class="close-gallery">Close</button>
+                <div id="fileContainer"></div> <!-- Gallery content goes here -->
+            </div>
+        </div>
+
+        <!-- Bridesmaid & Groomsmaid Section -->
+        <div class="section" id="bridesmaid">
+            <h2>Bridesmaid & Groomsmaid</h2>
+            <p><strong>Bridesmaid:</strong> Sarah</p>
+            <p><strong>Groomsmaid:</strong> John</p>
+            <p>Instagram: <a href="https://instagram.com/sarah" target="_blank">@sarah</a></p>
+            <p>Instagram: <a href="https://instagram.com/john" target="_blank">@john</a></p>
+        </div>
+
+        <!-- FAQs Section -->
+        <div class="section" id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <ul>
+                <li><strong>What should I wear?</strong> Dress code is semi-formal.</li>
+                <li><strong>Can I bring a plus one?</strong> Yes, you can bring a guest.</li>
+                <li><strong>What time should I arrive?</strong> Please arrive by 5:00 PM.</li>
+            </ul>
+        </div>
+
+        <!-- Song Suggestions Section -->
+        <div class="section" id="songs">
+            <h2>Song Suggestions</h2>
+            <p>We'd love to hear your favorite song suggestions for our big day. Please share them below:</p>
+            <form>
+                <input type="text" placeholder="Your Song Suggestion">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <!-- Live Stream Section -->
+       <div id="liveStreamSection" class="section">
+    <h2>Live Stream</h2>
+    <div id="liveStreamContainer">
+        <iframe
+            src="https://www.youtube.com/embed/live_stream_id"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+        ></iframe>
+    </div>
+</div>
+
+        <!-- Feedback Section -->
+        <div class="section" id="feedback">
+            <h2>Guest Feedback</h2>
+            <p>We value your feedback! Please let us know how we can make the event even more special:</p>
+            <form>
+                <textarea placeholder="Your Feedback"></textarea><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <!-- Re-See Button -->
+        <div id="reSeeSection">
+            <button class="ok-button" id="reSeeButton">Re-See Wedding Card</button>
+        </div>
+    </div>
+
+    <!-- Audio Element for Invitation Tune -->
+    <audio id="invitationTune">
+        <source src="your-invitation-tune.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
